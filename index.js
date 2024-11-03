@@ -14,19 +14,34 @@ app.get("/", (req, res) => {
 });
 
 app.post("/submit", async (req, res) => {
-    let pokemon = req.body["pName"];
+    const pokemon = req.body["pName"]; // Keep the original input
     try {
         const response = await axios.get(API_URL + pokemon);
-        console.log(response.data);
-        res.render("index.ejs", { content: JSON.stringify(response.data), error: null });
+        const { name, weight, abilities, types } = response.data;
+
+        const abilityNames = abilities.map(abilityObj => abilityObj.ability.name);
+        const typeNames = types.map(typeObj => typeObj.type.name); // Extract types
+
+        res.render("index.ejs", { 
+            name, 
+            weight, 
+            abilityNames, 
+            typeNames, 
+            error: null 
+        });
     } catch (error) {
         console.error("Failed to make request:", error.message);
         res.render("index.ejs", {
-            content: null,
+            name: null,
+            weight: null,
+            abilityNames: [],
+            typeNames: [],
             error: "Failed to fetch data: " + error.message,
         });
     }
 });
+
+
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
