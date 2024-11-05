@@ -2,3 +2,30 @@
     margin: 0;
     padding: 0;
 }
+
+/* Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #3466AF;
+    color: #FFCB05;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.button-search{
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    border: 1px black solid;
+    background: linear-gradient(to top, white 50%, red 50%);
+    font-weight: 900;
+}
+h2{
+    font-weight: 900;
+}
+div > p{
+    font-weight:900;
+}
