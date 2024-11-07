@@ -8,16 +8,30 @@
 </head>
 <body>
 
+    <form action="/random" method="post">
+        <input class="button-random" type="submit" name="rPokemon" value="Random" />
+    </form> 
+    <% if(nameR) { %>
+        <div class="pokemon-info">
+            <h2><%= nameR %></h2>
+            <p>Weight: <%= weightR %> lbs</p>
+            <p>Types: <%= typeNamesR.join(', ') %></p>
+            <p>Abilities: <%= abilityNamesR.join(', ') %></p>
+        </div>
+    <% } %>
+
     <h1>Pokémon Search</h1>
     <form action="/submit" method="post">
         <input class="search-text" type="text" name="pName" placeholder="Enter Pokémon Name" required />
         <input class="button-search" type="submit" value="Search" />
     </form>    
 
+
+    
     <% if(name) { %>
         <div class="pokemon-info">
             <h2><%= name %></h2>
-            <p>Weight: <%= weight %></p>
+            <p>Weight: <%= weight %> lbs</p>
             <p>Types: <%= typeNames.join(', ') %></p>
             <p>Abilities: <%= abilityNames.join(', ') %></p>
         </div>
